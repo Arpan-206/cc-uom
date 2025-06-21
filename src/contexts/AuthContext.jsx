@@ -1,13 +1,13 @@
-import { createContext } from 'preact';
-import { useContext, useState, useEffect } from 'preact/hooks';
-import authService from '../services/authService.js';
+import { createContext } from "preact";
+import { useContext, useState, useEffect } from "preact/hooks";
+import authService from "../services/authService.js";
 
 const AuthContext = createContext(null);
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
 };
@@ -23,8 +23,11 @@ export const AuthProvider = ({ children }) => {
       try {
         // Check if we're returning from authentication
         const urlParams = new URLSearchParams(window.location.search);
-        const hasAuthParams = urlParams.has('csticket') && urlParams.has('username') && urlParams.has('fullname');
-        
+        const hasAuthParams =
+          urlParams.has("csticket") &&
+          urlParams.has("username") &&
+          urlParams.has("fullname");
+
         if (hasAuthParams) {
           setProcessingAuth(true);
           const success = await authService.processAuthCallback();
@@ -42,7 +45,7 @@ export const AuthProvider = ({ children }) => {
           }
         }
       } catch (error) {
-        console.error('Authentication initialization failed:', error);
+        console.error("Authentication initialization failed:", error);
       } finally {
         setLoading(false);
       }
@@ -66,12 +69,8 @@ export const AuthProvider = ({ children }) => {
     processingAuth,
     login,
     logout,
-    isAuthenticated: !!user?.isAuthenticated
+    isAuthenticated: !!user?.isAuthenticated,
   };
 
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  );
-}; 
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+};

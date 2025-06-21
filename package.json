@@ -1,21 +1,21 @@
 {
-	"private": true,
-	"type": "module",
-	"scripts": {
-		"dev": "vite",
-		"build": "vite build",
-		"preview": "vite preview"
-	},
-	"dependencies": {
-		"@tailwindcss/vite": "^4.1.10",
-		"@typeform/embed-react": "^4.6.0",
-		"preact": "^10.25.3",
-		"preact-iso": "^2.9.2",
-		"preact-render-to-string": "^6.5.13",
-		"tailwindcss": "^4.1.10"
-	},
-	"devDependencies": {
-		"@preact/preset-vite": "^2.9.3",
-		"vite": "^6.0.4"
-	}
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.10",
+    "@typeform/embed-react": "^4.6.0",
+    "preact": "^10.25.3",
+    "preact-iso": "^2.9.2",
+    "preact-render-to-string": "^6.5.13",
+    "tailwindcss": "^4.1.10"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.9.3",
+    "vite": "^6.0.4"
+  }
 }
