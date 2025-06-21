@@ -1,15 +1,22 @@
-# `create-preact`
+# UoM x CodeCrafters
 
-<h2 align="center">
-  <img height="256" width="256" src="./src/assets/preact.svg">
-</h2>
+A simple web application that provides University of Manchester students with access to CodeCrafters through UoM CAS authentication.
 
-<h3 align="center">Get started using Preact and Vite!</h3>
+## What it does
 
-## Getting Started
+- Allows UoM students to login using their university credentials
+- Redirects authenticated users to a CodeCrafters Typeform
+- Basic authentication flow using UoM's studentnet authentication service
 
--   `npm run dev` - Starts a dev server at http://localhost:5173/
+## Development
 
--   `npm run build` - Builds for production, emitting to `dist/`. Prerenders app to static HTML
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
 
--   `npm run preview` - Starts a server at http://localhost:4173/ to test production build locally
+## Tech Stack
+
+- Preact (React alternative)
+- Vite (build tool)
+- Tailwind CSS (styling)
+- Typeform embed
