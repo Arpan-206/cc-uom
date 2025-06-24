@@ -6,10 +6,13 @@ import "./style.css";
 import CodeCraftersLogo from "./assets/cc-logo.png";
 import Cross from "./assets/cross.png";
 import authService from "./services/authService.js";
+import Footer from "./components/Footer.jsx";
+import LearnMore from "./components/LearnMore.jsx";
 
 export function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState('home'); // 'home' or 'learn-more'
 
   useEffect(() => {
     // Check for authentication callback first
@@ -34,10 +37,23 @@ export function App() {
     authService.logout();
   };
 
+  const handleLearnMore = () => {
+    setCurrentPage('learn-more');
+  };
+
+  const handleBackToHome = () => {
+    setCurrentPage('home');
+  };
+
+  // Show Learn More page
+  if (currentPage === 'learn-more') {
+    return <LearnMore onBack={handleBackToHome} />;
+  }
+
   if (!user) {
     return (
       <div>
-        <section className="bg-white lg:grid lg:h-screen lg:place-content-center">
+        <section className="bg-white lg:grid lg:h-[94.6vh] lg:place-content-center">
           <div className="mx-auto w-screen max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:px-8 lg:py-32">
             <div className="max-w-prose text-left">
               <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
@@ -67,12 +83,12 @@ export function App() {
                   Login with UoM &rarr;
                 </button>
 
-                <a
+                <button
+                  onClick={handleLearnMore}
                   className="inline-block rounded border border-gray-200 px-5 py-3 font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-50 hover:text-gray-900"
-                  href="#"
                 >
                   Learn More
-                </a>
+                </button>
               </div>
             </div>
 
@@ -83,6 +99,7 @@ export function App() {
             />
           </div>
         </section>
+        <Footer />
       </div>
     );
   }
@@ -133,6 +150,7 @@ export function App() {
           uom_authenticated_at: user.authenticatedAt,
         }}
       />
+      <Footer />
     </div>
   );
 }
